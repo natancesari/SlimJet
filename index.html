@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlimJet - Supporto per il tuo Benessere</title>
+    <!-- Fonte moderna e limpa do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Paleta de Cores Baseada na Imagem */
+        :root {
+            --primary-blue: #1A5276; 
+            --light-blue: #EBF5FB;  
+            --accent-teal: #1ABC9C; 
+            --text-dark: #2C3E50;
+            --text-gray: #7F8C8D;
+            --white: #FFFFFF;
+            --discount-red: #E74C3C;
+            --cod-green: #27AE60; /* Verde escuro para o destaque do pagamento na entrega */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-blue);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .presell-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .top-bar {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .product-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .low-price-badge {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.35em;
+            font-weight: 600;
+            padding: 6px 15px;
+            border-radius: 20px;
+            vertical-align: middle;
+            margin-top: -20px;
+            margin-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-gray);
+            margin-top: 15px;
+            font-weight: 400;
+        }
+
+        .content-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            border-radius: 8px;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover {
+            transform: scale(1.02);
+        }
+
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f2f6;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li::before {
+            content: '✔';
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+        }
+
+        .pricing-box {
+            background-color: #F8F9F9;
+            border: 2px solid var(--light-blue);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .discount-label {
+            background-color: var(--discount-red);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-gray);
+            font-size: 1.2em;
+            display: block;
+        }
+
+        .new-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin: 5px 0;
+            line-height: 1;
+        }
+        
+        .cod-notice {
+            background-color: #e8f8f5;
+            color: var(--cod-green);
+            border: 1px dashed var(--cod-green);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            padding: 20px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background-color: #154360;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 82, 118, 0.4);
+        }
+
+        .secure-checkout {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.85em;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .footer {
+            background-color: #2C3E50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8em;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            text-align-last: center;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .product-name { font-size: 2.5em; }
+            .low-price-badge { font-size: 0.4em; margin-top: 0; display: block; margin: 10px auto; width: fit-content; }
+            .content-grid { flex-direction: column; }
+            .main-content { padding: 25px; }
+            .cta-button { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        NOVITÀ SUL MERCATO ITALIANO - OFFERTA LIMITATA
+    </div>
+
+    <div class="presell-container">
+        <div class="main-content">
+            
+            <div class="product-header">
+                <h1 class="product-name">
+                    SLIMJET
+                    <span class="low-price-badge">Low Price</span>
+                </h1>
+                <p class="subtitle">Scopri il nuovo alleato per la tua routine quotidiana. Formulato per integrarsi perfettamente nel tuo stile di vita.</p>
+            </div>
+
+            <div class="content-grid">
+                
+                <div class="image-section">
+                    <img src="slimjet.png" alt="SlimJet Integratore" class="product-image">
+                </div>
+
+                <div class="info-section">
+                    <ul class="features-list">
+                        <li><strong>Supporto Quotidiano:</strong> Sviluppato per affiancarti ogni giorno.</li>
+                        <li><strong>Ingredienti Selezionati:</strong> Formula studiata con cura.</li>
+                        <li><strong>Zero Anticipi:</strong> Paghi comodamente al momento della consegna.</li>
+                    </ul>
+
+                    <div class="pricing-box">
+                        <span class="discount-label">SCONTO DEL 50%</span>
+                        <span class="old-price">Prezzo di listino: 58,00 €</span>
+                        <div class="new-price">29,00 €</div>
+                        <p style="margin: 0; color: var(--text-gray); font-size: 0.9em;">(Tasse incluse)</p>
+                    </div>
+
+                    <!-- Aviso de Pagamento na Entrega (COD) -->
+                    <div class="cod-notice">
+                        📦 Nessuna carta di credito richiesta. Paga direttamente al corriere!
+                    </div>
+
+                    <!-- Link do botão atualizado com um Call to Action voltado para o COD -->
+                    <a href="https://s3x8b.doctordominion.com/l" class="cta-button">
+                        Ordina Ora e Paga alla Consegna
+                    </a>
+                    
+                    <div class="secure-checkout">
+                        🔒 La tua richiesta è sicura e senza impegno iniziale
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Termini e Condizioni</a> | 
+            <a href="#">Contatti</a>
+        </div>
+        <div class="disclaimer">
+            <strong>ATTENZIONE:</strong> Questo sito non è affiliato o approvato da Google Inc. o Meta Inc.<br>
+            I risultati possono variare da individuo a individuo. SlimJet è un integratore alimentare e non è destinato a diagnosticare, trattare, curare o prevenire alcuna malattia. Le informazioni fornite su questo sito hanno scopo puramente informativo e non sostituiscono il parere del medico. Si consiglia sempre di consultare un professionista della salute prima di iniziare qualsiasi nuovo regime alimentare o di integrazione.
+        </div>
+    </footer>
+
+</body>
+</html>
